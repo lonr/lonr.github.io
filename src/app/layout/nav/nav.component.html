@@ -1,0 +1,15 @@
+<div class="UnderlineNav-body">
+  <a
+    *ngFor="let item of nav"
+    class="UnderlineNav-item"
+    [routerLink]="item.routerLink"
+    [attr.aria-current]="isActive(item)"
+  >
+    <svg [appIcon]="item.icon" class="UnderlineNav-octicon"></svg>
+    {{ item.text }}
+    <span class="Counter" *ngIf="item.counter$">{{ item.counter$ | async }}</span>
+  </a>
+</div>
+<div class="UnderlineNav-actions">
+  <a class="btn btn-sm">Button</a>
+</div>

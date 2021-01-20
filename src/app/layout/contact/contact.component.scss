@@ -1,0 +1,18 @@
+@use 'support' as *;
+
+address {
+  font-style: normal;
+}
+
+li {
+  font-size: 0.875rem;
+  line-height: 25px;
+  color: $text-gray-dark;
+  list-style: none;
+
+  ::ng-deep .octicon {
+    margin-right: 0.75ch;
+    color: $text-gray-light;
+    vertical-align: -3.5px;
+  }
+}

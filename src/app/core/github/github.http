@@ -1,0 +1,68 @@
+@baseUrl = https://api.github.com/repos/lonr/lonr.github.io
+
+# Headers
+@JSONMediaType = application/vnd.github.v3+json
+@HTMLMediaType = application/vnd.github.v3.html
+
+###
+# CORS see https://docs.github.com/en/free-pro-team@latest/rest/overview/resources-in-the-rest-api#cross-origin-resource-sharing
+
+curl https://api.github.com -H "Origin: http://example.com" -X OPTIONS
+
+###
+
+# Get files in the folder
+GET {{baseUrl}}/contents/docs/blogs
+Accept: {{JSONMediaType}}
+
+###
+
+# Get the repo info
+# vnd.github.mercy-preview+json for topics
+#   return an empty array if it has no topics
+# https://stackoverflow.com/a/61466197/5783347
+# https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#get-all-repository-topics
+# vnd.github.scarlet-witch-preview+json for the code of conduct
+#   just as an example of adding two media types
+# https://docs.github.com/en/free-pro-team@latest/rest/reference/codes-of-conduct
+GET api.github.com/repos/lonr/lonr.github.io
+Accept: application/vnd.github.mercy-preview+json,application/vnd.github.scarlet-witch-preview+json
+Accept: {{JSONMediaType}}
+
+###
+
+GET api.github.com/repos/zicijs/zici-webext
+Accept: application/vnd.github.mercy-preview+json,application/vnd.github.scarlet-witch-preview+json
+
+###
+
+# Get README.md
+GET api.github.com/repos/github/markup/readme
+Accept: {{HTMLMediaType}}
+
+###
+
+# Get README.md
+GET api.github.com/repos/angular/angular/readme
+Accept: {{HTMLMediaType}}
+
+###
+
+# https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#contents
+GET api.github.com/repos/lonr/lonr.github.io/contents/docs/about/about.md?ref=master
+Accept: {{HTMLMediaType}}
+
+###
+
+GET api.github.com/repos/lonr/lonr.github.io/contents/docs/about/about.md?ref=master
+Accept: application/vnd.github.VERSION.html
+
+###
+
+GET api.github.com/repos/nicolas-van/easy-markdown-to-github-pages/contents/README.md
+Accept: application/vnd.github.VERSION.html
+
+
+###
+
+https://lonr.github.io/docs/portfolio/portfolio.json

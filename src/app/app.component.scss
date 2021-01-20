@@ -1,0 +1,68 @@
+@use 'support' as *;
+
+:host {
+  --avatar-size: 175px;
+  display: grid;
+  max-width: 980px;
+  margin-right: auto;
+  margin-left: auto;
+  grid:
+    'avatar   header' calc(var(--avatar-size) / 2)
+    'avatar   nav' auto
+    'toc      main' auto
+    'address  main' auto
+    'footer   main' 1fr /
+    var(--avatar-size) 1fr;
+  // stylelint-disable-next-line plugin/no-unsupported-browser-features -- column-gap is supported in grid in safari
+  column-gap: $spacer-6;
+}
+
+app-avatar {
+  grid-area: avatar;
+}
+
+header {
+  grid-area: header;
+
+  .name {
+    margin-top: $spacer-2;
+  }
+
+  .bio {
+    margin-bottom: 0;
+    color: $text-gray;
+  }
+}
+
+nav.app-nav {
+  grid-area: nav;
+  align-self: start;
+  margin-top: $spacer-3;
+}
+
+%with-bottom-hr {
+  padding-bottom: $spacer-3;
+  margin-top: $spacer-3;
+  border-bottom: 1px solid $border-gray-light;
+}
+
+aside.app-toc {
+  @extend %with-bottom-hr;
+  grid-area: toc;
+}
+
+aside.app-contact {
+  @extend %with-bottom-hr;
+  grid-area: address;
+}
+
+main {
+  grid-area: main;
+}
+
+footer {
+  grid-area: footer;
+  margin-top: $spacer-3;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}

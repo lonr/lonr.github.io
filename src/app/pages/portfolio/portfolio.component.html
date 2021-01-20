@@ -1,0 +1,40 @@
+<app-loader [loading]="false"></app-loader>
+<ul>
+  <li *ngFor="let repo of portfolio" class="repo">
+    <div class="name">
+      <a class="h3" [href]="repo.html_url">{{ repo.name }}</a>
+    </div>
+    <div *ngIf="repo.fork" class="parent-info text-gray f6 mb-1">
+      Forked from
+      <a class="muted-link" [href]="repo.parent!.html_url">{{ repo.parent!.full_name }}</a>
+    </div>
+    <div class="description">{{ repo.description }}</div>
+    <div *ngIf="repo.topics && repo.topics!.length > 0" class="topics">
+      <span *ngFor="let topic of repo.topics" class="topic">{{ topic }}</span>
+    </div>
+    <div class="info">
+      <span class="lang badge">
+        <span class="lang-{{ repo.language }}"></span>
+        {{ repo.language }}
+      </span>
+      <ng-container *ngFor="let badge of badges">
+        <ng-container *ngIf="badge.check(repo)">
+          <ng-container [ngSwitch]="badge.type">
+            <span *ngSwitchCase="'span'" class="badge">
+              <svg [appIcon]="badge.icon"></svg>
+              {{ badge.getContent(repo) }}
+            </span>
+            <a *ngSwitchCase="'a'" class="badge muted-link" [href]="badge.getHref!(repo)">
+              <svg [appIcon]="badge.icon"></svg>
+              {{ badge.getContent(repo) }}
+            </a>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+      <span class="updated-at">
+        Updated
+        <relative-time [attr.datetime]="repo.updated_at"> April 1, 2014 </relative-time>
+      </span>
+    </div>
+  </li>
+</ul>

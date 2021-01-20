@@ -1,0 +1,24 @@
+@use "support" as *;
+@import '@primer/css/labels/counters';
+
+:host ::ng-deep .octicon {
+  margin-right: 0.7ch;
+  vertical-align: -2px;
+
+  &.octicon-book {
+    vertical-align: -3px;
+  }
+}
+
+.Counter {
+  vertical-align: 1px;
+}
+
+.UnderlineNav-item {
+  &.selected,
+  &[role='tab'][aria-selected='true'],
+  &[aria-current]:not([aria-current='false']) {
+    // stylelint-disable-next-line primer/borders
+    border-bottom-color: var(--reverse-color);
+  }
+}

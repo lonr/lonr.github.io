@@ -1,0 +1,5 @@
+@forward '@primer/css/support' with(
+  $body-font: sans-serif,
+  $mono-font: monospace
+);
+@use '@primer/css/support' as *;

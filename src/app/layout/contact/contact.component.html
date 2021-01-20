@@ -1,0 +1,11 @@
+<address>
+  <ul>
+    <li *ngFor="let item of contact$ | async">
+      <svg *ngIf="item.icon" [appIcon]="item.icon"></svg>
+      <ng-container *ngIf="item.href; else plain">
+        <a class="link-gray-dark" [href]="item.href" rel="noopener">{{ item.text }}</a>
+      </ng-container>
+      <ng-template #plain>{{ item.text }}</ng-template>
+    </li>
+  </ul>
+</address>

@@ -1,0 +1,7 @@
+@use 'support' as *;
+
+:host {
+  display: block;
+  padding-top: $spacer-5;
+  padding-bottom: $spacer-5;
+}
