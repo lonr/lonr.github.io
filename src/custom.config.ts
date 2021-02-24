@@ -56,6 +56,18 @@ const CUSTOM_CONTACT: CustomContact = [
  */
 const CUSTOM_README = 'blog/README.md';
 
+/** The time zone in which you write blogs (the handwritten date).
+ *  The `created_at` date of blog `2021-1-1-blog.md` will be set to `2021-01-01T12:00+08:00`,
+ *    as if it was created at 12:00am in `BLOG_TIME_ZONE`.
+ *  Date strings showed finally are in visitors' local time zone
+ */
+// const BLOG_TIME_ZONE = 'Z'; // Defaults to 'Z' (stands for UTC time)
+const BLOG_TIME_ZONE = '+08:00';
+
+
+/** How many blogs per page. Defaults to 15*/
+const BLOGS_PER_PAGE = 15;
+
 /**
  * Which repo the blog project resides in. Default to `${login}/${login}.github.io`
  * **This option doesn't work now**
@@ -75,6 +87,8 @@ const CUSTOM_CONFIG = {
   CUSTOM_PROFILE,
   CUSTOM_CONTACT,
   CUSTOM_README,
+  BLOG_TIME_ZONE,
+  BLOGS_PER_PAGE,
 };
 
 export default CUSTOM_CONFIG;

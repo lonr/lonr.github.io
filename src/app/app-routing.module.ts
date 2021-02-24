@@ -13,7 +13,6 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('./pages/homepage/homepage.module').then((m) => m.HomepageModule),
-    pathMatch: 'full',
   },
   {
     path: '',
@@ -27,8 +26,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       preloadingStrategy: PreloadAllModules,
       scrollPositionRestoration: 'enabled',
-      // enableTracing: true,
-      // anchorScrolling: 'enabled',
+      enableTracing: true,
+      anchorScrolling: 'enabled',
+      onSameUrlNavigation: 'reload',
     }),
   ],
   exports: [RouterModule],

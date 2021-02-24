@@ -6,7 +6,6 @@ import { RemoteProfile, getFinalProfile, Profile } from './profile';
 import { buildContact, ContactItem } from './contact';
 import { API_BASE_URL, DEFAULT_HEADERS } from '../github/github';
 import CUSTOM_CONFIG from 'src/custom.config';
-import { ReadmeMeta } from './readme';
 import { GITHUB_URL } from '../github/github';
 
 @Injectable({
@@ -28,22 +27,20 @@ export class ConfigService {
   }
 
   get portfolioRepos$() {
-    return from(CUSTOM_CONFIG.PORTFOLIO_REPOS);
+    return of(CUSTOM_CONFIG.PORTFOLIO_REPOS);
   }
 
-  get readmeMeta$(): Observable<ReadmeMeta> {
+  get readmeMeta$(): Observable<{ repo: string; path: string }> {
     return this.profile$.pipe(
       map(({ login }) => {
         const customReadme = CUSTOM_CONFIG.CUSTOM_README;
         if (customReadme) {
           return {
-            type: 'custom',
             repo: `${login}/${login}.github.io`,
             path: customReadme,
           };
         } else {
           return {
-            type: 'standalone',
             repo: `${login}/${login}`,
             path: 'README.md',
           };

@@ -1,0 +1,22 @@
+.TimelineItem-body {
+  details {
+    summary:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    .summary-icons {
+      float: right;
+    }
+
+    /* stylelint-disable-next-line */
+    &:not([open]) ::ng-deep .summary-icon--open {
+      display: none;
+    }
+
+    /* stylelint-disable-next-line */
+    &[open] ::ng-deep .summary-icon--closed {
+      display: none;
+    }
+  }
+}

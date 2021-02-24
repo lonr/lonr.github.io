@@ -1,1 +1,11 @@
-<p>toc works!</p>
+<h2 class="h4 mb-2">Table of contents</h2>
+<ol>
+  <li *ngFor="let dataItem of toc.getTocData() | async">
+    <a [href]="dataItem.href" [innerHTML]="dataItem.innerHTML" class="link-gray toc-link"></a>
+    <ol *ngIf="dataItem.subTocData">
+      <li *ngFor="let subDataItem of dataItem.subTocData" class="pl-3">
+        <a [href]="subDataItem.href" [innerHTML]="subDataItem.innerHTML" class="link-gray toc-link"></a>
+      </li>
+    </ol>
+  </li>
+</ol>

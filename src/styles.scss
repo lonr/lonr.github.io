@@ -1,30 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
 
 @use '@primer/octicons';
+// styles/_support.scss
 @use 'support' as *;
-// if we use `@use`, then variables that `@primer/css/base`-like used won't be changed by variables imported(via `@use`, above line) in this module
+// if we use `@use` below, then variables that `@primer/css/base`-like used won't be changed by variables imported(via `@use`, above line) in this module
 // https://sass-lang.com/documentation/at-rules/import#loading-a-module-that-contains-imports:~:text=In%20other%20words%2C%20everything%20that%E2%80%99s%20imported,were%20written%20in%20one%20big%20stylesheet.
-@import "@primer/css/base";
-@import "@primer/css/loaders";
-@import "@primer/css/navigation/underline-nav";
+@import '@primer/css/base';
+@import '@primer/css/loaders';
+@import '@primer/css/navigation/underline-nav';
+@import '@primer/css/navigation/filter-list';
+@import '@primer/css/timeline';
+@import '@primer/css/labels';
 // @import "@primer/css/utilities/box-shadow";
 // @import "@primer/css/box/index.scss";
 // @import "@primer/css/breadcrumb/index.scss";
-// @import "@primer/css/buttons/index.scss";
+@import "@primer/css/buttons/index.scss";
 // @import "@primer/css/table-object/index.scss";
 // @import "@primer/css/forms/index.scss";
 // @import "@primer/css/layout/index.scss";
-// @import "@primer/css/pagination/index.scss";
+@import "@primer/css/pagination";
 // @import "@primer/css/tooltips/index.scss";
-// @import "@primer/css/truncate/index.scss";
-@import "@primer/css/markdown";
-@import "@primer/css/utilities";
-@import "github-syntax-light/lib/github-light.css";
-// Scss variables defined/`@use`d in this file can't be used in components' scss
+@import "@primer/css/truncate/index.scss";
+@import '@primer/css/markdown';
+@import '@primer/css/utilities';
+@import 'github-syntax-light/lib/github-light.css';
+// SCSS variables defined/`@use`d in this file can't be used in components' scss
 // See https://github.com/angular/angular-cli/issues/1253
 
 :root {
-  // Primer colors: https://primer.style/css/utilities/colors
   --theme-color: #0a659e;
   --reverse-color: #f59a61;
+  // Primer colors: https://primer.style/css/utilities/colors
 }

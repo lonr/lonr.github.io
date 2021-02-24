@@ -1,0 +1,28 @@
+@use "support" as *;
+.blog {
+  padding-top: $spacer-4;
+  padding-bottom: $spacer-4;
+  list-style-type: none;
+
+  &:first-of-type {
+    padding-top: 0;
+  }
+  &:not(:last-of-type) {
+    border-bottom: 1px solid $border-gray-light;
+  }
+}
+
+.title {
+  margin-bottom: $spacer-1;
+}
+
+.created_at {
+  font-size: $h6-size;
+  color: $text-gray;
+
+  ::ng-deep svg {
+    width: 15px;
+    height: 13px;
+    vertical-align: -1px;
+  }
+}

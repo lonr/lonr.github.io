@@ -1,8 +1,9 @@
 <app-loader [loading]="false"></app-loader>
 <ul>
   <li *ngFor="let repo of portfolio" class="repo">
-    <div class="name">
+    <div class="title">
       <a class="h3" [href]="repo.html_url">{{ repo.name }}</a>
+      <span *ngIf="repo.is_template" class="Label Label--outline v-align-text-bottom ml-2">Template</span>
     </div>
     <div *ngIf="repo.fork" class="parent-info text-gray f6 mb-1">
       Forked from
@@ -13,9 +14,9 @@
       <span *ngFor="let topic of repo.topics" class="topic">{{ topic }}</span>
     </div>
     <div class="info">
-      <span class="lang badge">
-        <span class="lang-{{ repo.language }}"></span>
-        {{ repo.language }}
+      <span *ngIf="repo.language" class="lang badge">
+        <span class="lang-{{ repo.language! }}"></span>
+        {{ repo.language! }}
       </span>
       <ng-container *ngFor="let badge of badges">
         <ng-container *ngIf="badge.check(repo)">
@@ -33,7 +34,7 @@
       </ng-container>
       <span class="updated-at">
         Updated
-        <relative-time [attr.datetime]="repo.updated_at"> April 1, 2014 </relative-time>
+        <relative-time lang="en" [attr.datetime]="repo.updated_at"> {{ repo.updated_at }} </relative-time>
       </span>
     </div>
   </li>

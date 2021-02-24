@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import {IconDirective} from './icon/icon.directive';
 import { LoaderComponent } from './loader/loader.component';
+import { NgVarDirective } from './ng-var.directive';
 
 @NgModule({
-  declarations: [IconDirective, LoaderComponent],
+  declarations: [IconDirective, LoaderComponent, NgVarDirective],
   imports: [CommonModule],
-  exports: [IconDirective, LoaderComponent],
+  exports: [IconDirective, LoaderComponent, NgVarDirective],
 })
 export class SharedModule {}

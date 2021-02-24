@@ -1,17 +1,18 @@
 <app-avatar></app-avatar>
 <header>
-  <h1 class="name">{{ (profile$ | async)?.name }}</h1>
-  <p class="bio">{{ (profile$ | async)?.bio }}</p>
+  <h1 class="name">{{ (config.profile$ | async)?.name }}</h1>
+  <p class="bio">{{ (config.profile$ | async)?.bio }}</p>
 </header>
 <nav class="app-nav UnderlineNav"></nav>
-<aside class="app-toc"></aside>
+<aside *ngIf="shouldShowToc() | async" class="app-toc"></aside>
 <aside class="app-contact"></aside>
 <main>
   <router-outlet></router-outlet>
 </main>
 <footer>
   <p class="text-gray">
-    <a class="link-gray-dark" href="https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode" rel="noopener">CC BY-NC-SA</a
+    <a class="link-gray-dark" href="https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode" rel="noopener"
+      >CC BY-NC-SA</a
     >（特别说明除外）
     <!-- &copy; 2017 lonr -->
   </p>

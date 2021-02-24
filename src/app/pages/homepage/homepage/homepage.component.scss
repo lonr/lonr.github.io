@@ -1,0 +1,8 @@
+:host {
+  display: flex;
+  align-items: flex-start;
+
+  .timeline-wrapper {
+    flex: auto;
+  }
+}

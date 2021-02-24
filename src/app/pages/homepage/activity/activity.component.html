@@ -1,0 +1,24 @@
+<div class="timeline-wrapper">
+  <app-calendar
+    class="d-block position-relative"
+    [groupedBlogs]="blogs.getGroupedByDateBlogs() | async"
+    [start]="start"
+    [end]="end"
+    (dateSelected)="changeSelectedDate($event)"
+  ></app-calendar>
+  <ng-container *ngIf="blogs.getGroupedByDateBlogs() | async as groupedBlogs">
+    <app-timeline
+      *ngIf="blogs.getSortedBlogList() | async as sortedBlogList"
+      [groupedBlogs]="groupedBlogs"
+      [sortedBlogList]="sortedBlogList"
+      [start]="start"
+      [end]="end"
+      [selectedDate]="selectedDate"
+    ></app-timeline>
+  </ng-container>
+</div>
+<ul class="filter-list small">
+  <li *ngFor="let filter of getYearFilters() | async; index as i">
+    <a class="filter-item" [attr.aria-current]="isFilterActive(filter, i)" [routerLink]="filter.routerLink" [queryParams]="filter.queryParams">{{ filter.year }}</a>
+  </li>
+</ul>

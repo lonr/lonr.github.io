@@ -7,7 +7,7 @@
   >
     <svg [appIcon]="item.icon" class="UnderlineNav-octicon"></svg>
     {{ item.text }}
-    <span class="Counter" *ngIf="item.counter$">{{ item.counter$ | async }}</span>
+    <span class="Counter" *ngIf="item.counter$">{{ (item.counter$ | async) || '-' }}</span>
   </a>
 </div>
 <div class="UnderlineNav-actions">

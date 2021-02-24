@@ -1,2 +1,2 @@
 <app-loader [loading]="false"></app-loader>
-<app-markdown [markdownMeta$]="markdownMeta$"></app-markdown>
+<app-markdown *ngIf="readmeMeta$ | async as readmeMeta" [markdownMeta]="readmeMeta"></app-markdown>

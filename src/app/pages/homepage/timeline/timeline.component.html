@@ -1,0 +1,40 @@
+<div *ngFor="let item of getTimelineData() | keyvalue">
+  <h2 class="h6 pr-2 py-1 border-bottom mb-3" style="height: 14px">
+    <time [dateTime]="item.key" class="pl-2 pr-3" style="background-color: #fff" ngPreserveWhitespaces>
+      <ng-container *ngIf="item.key.length > 7; else onlyMonth">
+        {{ item.key | date: 'MMMM d,' }}
+      </ng-container>
+      <ng-template #onlyMonth>{{ item.key | date: 'MMMM' }}</ng-template>
+      <span class="text-gray">{{ item.key | date: 'y' }}</span>
+    </time>
+  </h2>
+  <div class="TimelineItem">
+    <div class="TimelineItem-badge">
+      <svg [appIcon]="'pencil'"></svg>
+    </div>
+
+    <div class="TimelineItem-body">
+      <details class="details-reset" open>
+        <!-- classes copied from GitHub -->
+        <summary
+          *ngVar="item.value.length as length"
+          class="btn-link f4 muted-link no-underline lh-condensed width-full"
+        >
+          Posted {{ length > 1 ? length + ' blogs' : '1 blog' }}
+          <span class="summary-icons">
+            <svg class="summary-icon--open" [appIcon]="'fold'"></svg>
+            <svg class="summary-icon--closed" [appIcon]="'unfold'"></svg>
+          </span>
+        </summary>
+        <ul class="blog-list list-style-none">
+          <li *ngFor="let blog of item.value">
+            <a class="link-gray-dark" [routerLink]="blog.routerLink">{{ blog.title }}</a>
+            <time class="float-right f6 text-gray-light" [dateTime]="blog.created_at">{{
+              blog.created_at | date: 'MMM d'
+            }}</time>
+          </li>
+        </ul>
+      </details>
+    </div>
+  </div>
+</div>

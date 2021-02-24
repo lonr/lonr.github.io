@@ -1,0 +1,21 @@
+<nav class="paginate-container" aria-label="Pagination" ngPreserveWhitespaces>
+  <div *ngIf="numbers.length" class="pagination">
+    <ng-container *ngIf="previous.exists; else noPrevious">
+      <a class="previous_page" rel="prev" [routerLink]="previous.routerLink" aria-label="Previous">Previous</a>
+    </ng-container>
+    <ng-template #noPrevious><span class="previous_page" aria-disabled="true">Previous</span></ng-template>
+    <ng-container *ngFor="let number of numbers">
+      <ng-container [ngSwitch]="getNumberType(number)">
+        <em *ngSwitchCase="'current'" aria-current="page">{{ number.page }}</em>
+        <a *ngSwitchCase="'normal'" [routerLink]="number.routerLink" [attr.aria-label]="'Page ' + number.page">{{
+          number.page
+        }}</a>
+        <span *ngSwitchCase="'inGap'" class="gap">…</span>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngIf="next.exists; else noNext">
+      <a class="next_page" rel="next" [routerLink]="next.routerLink" aria-label="Next Page">Next</a>
+    </ng-container>
+    <ng-template #noNext><span class="next_page" aria-disabled="true">Next</span></ng-template>
+  </div>
+</nav>

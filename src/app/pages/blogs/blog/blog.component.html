@@ -1,2 +1,3 @@
 <p>blog works!</p>
-<div>{{ blog$ | async }}</div>
+<app-markdown *ngIf="blogMeta$ | async as blogMeta" [markdownMeta]="blogMeta"></app-markdown>
+<app-utterances *ngIf="utterancesConfig" [config]="utterancesConfig"></app-utterances>

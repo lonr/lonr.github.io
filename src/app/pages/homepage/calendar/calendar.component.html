@@ -1,0 +1,35 @@
+<ng-container *ngIf="getCalData() as calData">
+    <svg width="722" height="112" class="cal" #cal>
+      <g transform="translate(10, 20)">
+        <g *ngFor="let week of calData.calWeeks" [attr.transform]="week.transform">
+          <rect
+            *ngFor="let day of week.calDays"
+            [attr.x]="day.x"
+            [attr.y]="day.y"
+            [attr.fill]="day.fill"
+            [attr.width]="'10'"
+            [attr.height]="'10'"
+            [attr.rx]="'2'"
+            [attr.ry]="'2'"
+            [attr.data-date]="day['data-date']"
+            [attr.data-count]="day['data-count']"
+            class="cal-day"
+          ></rect>
+        </g>
+        <text *ngFor="let month of calData.monthLabels" [attr.x]="month.x" [attr.y]="'-8'" class="cal-label">
+          {{ month.name }}
+        </text>
+        <text *ngFor="let weekday of calData.weekdayLabels" [attr.dx]="'-10'" [attr.dy]="weekday.dy" class="cal-label">
+          {{ weekday.name }}
+        </text>
+      </g>
+    </svg>
+    <div class="cal-legend">
+      0
+      <svg *ngFor="let color of calData.legendColors" width="10" height="10">
+        <rect width="10" height="10" rx="2" ry="2" [attr.fill]="color"></rect>
+      </svg>
+      4+
+    </div>
+    <div #tooltip class="svg-tip" hidden [style.pointerEvents]="'none'"></div>
+</ng-container>

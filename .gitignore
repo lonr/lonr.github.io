@@ -1,5 +1,8 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+# A VSCode plugin I'm using
+.favorites.json
+
 # compiled output
 /dist
 /tmp

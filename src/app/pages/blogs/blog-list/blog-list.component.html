@@ -1,0 +1,18 @@
+<ng-container *ngIf="currentPage && currentPage! > 0">
+  <ul *ngIf="paginatedBlogLists![currentPage! - 1] as blogs">
+    <li *ngFor="let blog of blogs" class="blog">
+      <div class="title">
+        <a class="h3" [routerLink]="blog.routerLink">{{ blog.title }}</a>
+      </div>
+      <span class="created_at">
+        <a class="link-gray" [href]="blog.edit_url"><svg appIcon="pencil"></svg></a>
+        <a class="link-gray" [href]="blog.html_url">
+          Posted
+          <relative-time lang="en" [attr.datetime]="blog.created_at"> {{ blog.created_at }} </relative-time>
+        </a>
+      </span>
+    </li>
+  </ul>
+</ng-container>
+
+<app-pagination *ngIf="pagingInfo && pagingInfo!.pageCount > 1" [pagingInfo]="pagingInfo"></app-pagination>

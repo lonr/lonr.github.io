@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { ConfigService } from './core/config/config.service';
 import { Profile } from './core/config/profile';
+import { TocService } from './layout/toc/toc.service';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +11,13 @@ import { Profile } from './core/config/profile';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  profile$: ReplaySubject<Profile>;
+  constructor(public config: ConfigService, public toc: TocService) {}
 
-  constructor(config: ConfigService) {
-    this.profile$ = config.profile$;
+  shouldShowToc() {
+    return this.toc.getTocData().pipe(
+      map((data) => {
+        return data.length > 0;
+      }),
+    );
   }
 }
